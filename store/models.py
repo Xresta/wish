@@ -25,7 +25,6 @@ class Product(models.Model):
     name = models.CharField(max_length=255, db_index=True)
     slug = models.SlugField(max_length=255, default="momo")
     image = models.ImageField(upload_to='images/', default =True)
-    #desciption = models. TextField(blank=True)
     price = models.DecimalField(max_digits=4, decimal_places=1, default=0)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)

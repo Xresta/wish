@@ -1,1 +1,1 @@
-web: gunicorn wishfix.wsgi
+web: gunicorn core.wsgi
