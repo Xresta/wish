@@ -3,10 +3,11 @@ from django.db.models.expressions import OrderBy
 from django.db.models.fields import SlugField
 from django.utils.timezone import now
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField(max_length=255, db_index=True)
-#slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
     deletedAt = models.DateTimeField(auto_now=True)
@@ -22,9 +23,9 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
     name = models.CharField(max_length=255, db_index=True)
-   # slug = models.SlugField(max_length=255, default="momo")
+    slug = models.SlugField(max_length=255, default="momo")
     image = models.ImageField(upload_to='images/', default =True)
-    desciption = models. TextField(blank=True)
+    #desciption = models. TextField(blank=True)
     price = models.DecimalField(max_digits=4, decimal_places=1, default=0)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
